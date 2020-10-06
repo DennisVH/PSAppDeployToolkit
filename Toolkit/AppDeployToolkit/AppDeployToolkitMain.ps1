@@ -10146,9 +10146,10 @@ Function Set-ActiveSetup {
 						Else {
 							Execute-ProcessAsUser -Path $CUStubExePath -Wait -ContinueOnError $true
 						}				
+					}
 
-						Write-Log -Message "Adding Active Setup Key for the current user: [$HKCUActiveSetupKey]." -Source ${CmdletName}
-						& $SetActiveSetupRegKeys -ActiveSetupRegKey $HKCUActiveSetupKey -SID $RunAsActiveUser.SID					}
+					Write-Log -Message "Adding Active Setup Key for the current user: [$HKCUActiveSetupKey]." -Source ${CmdletName}
+					& $SetActiveSetupRegKeys -ActiveSetupRegKey $HKCUActiveSetupKey -SID $RunAsActiveUser.SID					}
 				}
 				Else {
 					If ($ExecuteForCurrentUser) {
@@ -10165,9 +10166,10 @@ Function Set-ActiveSetup {
 					Else {
 						$ExecuteResults = Execute-Process -FilePath $CUStubExePath -PassThru -ExitOnProcessFailure $false
 					}
+				}
 
-					Write-Log -Message "Adding Active Setup Key for the current user: [$HKCUActiveSetupKey]." -Source ${CmdletName}
-					& $SetActiveSetupRegKeys -ActiveSetupRegKey $HKCUActiveSetupKey				}
+				Write-Log -Message "Adding Active Setup Key for the current user: [$HKCUActiveSetupKey]." -Source ${CmdletName}
+				& $SetActiveSetupRegKeys -ActiveSetupRegKey $HKCUActiveSetupKey				}
 			}
 		}
 		Catch {
